@@ -11,10 +11,33 @@ const App = () => {
   const [tableHead, setTableHead] = useState([]);
   const [tableData, setTableData] = useState([]);
 
-  useEffect(() => {
-    loadHead();
-    loadData();
-  }, []);
+ useEffect(() => {
+  const loadHead = async () => {
+    try {
+      const head = await AsyncStorage.getItem("head-key");
+      if (head !== null) {
+        setTableHead(JSON.parse(head));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const loadData = async () => {
+    try {
+      const data = await AsyncStorage.getItem("data-key");
+      if (data !== null) {
+        setTableData(JSON.parse(data));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // useEffect 내에서 함수들을 호출
+  loadHead();
+  loadData();
+}, []);
   // DMC 노선
   const dmcTableHead = ['운행순서', '학교', 'DMC역', '새절역', '학교'];
   const dmcTableData = [
@@ -34,7 +57,8 @@ const App = () => {
     ['5', '16:10', '16:30', '16:35', '16:50'],
     ['6', '17:10', '17:30', '17:35', '17:50'],
     ['7', '17:50', '18:10', '18:15', '18:35'],
-  ]
+  ];
+
   const saveHead = async(key) =>{
     try {
       const headValue = JSON.stringify(key);
@@ -42,7 +66,7 @@ const App = () => {
     } catch(error){
       console.log(error);
     }
-  }
+  };
   const saveData = async(key) =>{
     try {
       const dataValue = JSON.stringify(key);
@@ -50,31 +74,31 @@ const App = () => {
     } catch(error){
       console.log(error);
     }
-  }
+  };
   const loadHead = async() =>{
     try{
       const head = await AsyncStorage.getItem("head-key")
       if (head !== null){
-        setTableHead(JSON.parse(head))
+        setTableHead(JSON.parse(head));
       }else {
-        setTableHead(dmcTableHead)
+        setTableHead(dmcTableHead);
       }
     }catch(error){
       console.log(error);
     }
-  }
+  };
   const loadData = async() =>{
     try{
       const data = await AsyncStorage.getItem("data-key")
       if (head !== null){
-        setTableData(JSON.parse(data))
+        setTableData(JSON.parse(data));
       }else {
-        setTableData(dmcTableData)
+        setTableData(dmcTableData);
       }
     }catch(error){
       console.log(error);
     }
-  }
+  };
   const first = () => {
     setRoute(true);
     setTableHead(dmcTableHead);
@@ -97,7 +121,7 @@ const App = () => {
       <View style={styles.header}>
         <Image 
           style={styles.logo}
-          source={require('/Users/jangjunho/Capston2/BookShuttleBus/assets/images/logoCollege.jpeg')}
+          source={require('/Users/jangjunho/BookShuttleBus/assets/images/logoCollege.jpeg')}
           resizeMode='contain'
         />
       </View>
