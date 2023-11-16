@@ -236,6 +236,7 @@ const styles = StyleSheet.create({
   },
   tableContainer: {
     flex: 1,
+    marginTop: 10,
     padding: 16,
     backgroundColor: '#fff',
   },
