@@ -7,17 +7,15 @@ import { getAnalytics } from "firebase/analytics";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCJO2oDJJ0UpEKlEIOa5BFjiWfnHhFum-8",
-  authDomain: "halogen-oxide-380406.firebaseapp.com",
-  databaseURL: "https://halogen-oxide-380406-default-rtdb.firebaseio.com/",
-  projectId: "halogen-oxide-380406",
-  storageBucket: "halogen-oxide-380406.appspot.com",
-  messagingSenderId: "957679418247",
-  appId: "1:957679418247:web:907cf200c4f224f9ceb122",
-  measurementId: "G-YLZ8WDQRHZ"
+  apiKey: "AIzaSyDDmks2oazUfJuRZUcew6WPbi9iV1k_MD4",
+  authDomain: "bookshuttleapp.firebaseapp.com",
+  projectId: "bookshuttleapp",
+  storageBucket: "bookshuttleapp.appspot.com",
+  messagingSenderId: "450628130544",
+  appId: "1:450628130544:web:00109e982a629e4426d435",
+  measurementId: "G-EZ2354T6BS"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-
